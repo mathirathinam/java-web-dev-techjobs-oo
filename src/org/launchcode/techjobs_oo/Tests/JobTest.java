@@ -39,6 +39,32 @@ public class JobTest {
 
 
     }
+@Test
+    public void TestForBlankLineToString(){
+        char firstChar = job3.toString().charAt(0);
+        char lastChar = job3.toString().charAt(job3.toString().length()-1);
+        assertEquals('\n', job3.toString().charAt(0));
+    //assertEquals('\n', job3.toString().charAt(job3.toString().length()-1));
+    System.out.println(lastChar);
+}
+@Test
+    public void TestForLabelAndDataToString(){
+        String output = String.format("\nID: %d" + "\nName: %s" + "\nEmployer: %s"+"\nLocation: %s"+"\nPositionType: %s"+"\nCoreCompetency: %s\n",job3.getId(),job3.getName(),job3.getEmployer().getValue(),job3.getLocation().getValue(),job3.getPositionType().getValue(),job3.getCoreCompetency().getValue());
+    System.out.println(job3.toString());
+    assertEquals(output,job3.toString());
 
+    }
+@Test
+    public void TestForEmptyFieldToString(){
 
+job3.getEmployer().setValue("");
+job3.getLocation().setValue("");
+    String output = String.format("\nID: %d" + "\nName: %s" + "\nEmployer: %sData not available"+"\nLocation: %sData not available"+"\nPositionType: %s"
+            +"\nCoreCompetency: %s\n",job3.getId(),job3.getName(),job3.getEmployer().getValue(),job3.getLocation().getValue(),job3.getPositionType().getValue(),job3.getCoreCompetency().getValue());
+
+    //String output = String.format("\nID: %d" + "\nName: %s" + "\nEmployer: Data not available"+"\nLocation: Data not available"+"\nPositionType: %s"
+           // +"\nCoreCompetency: %s \n",job3.getId(),job3.getName(),job3.getEmployer().getValue(),job3.getLocation().getValue(),job3.getPositionType().getValue(),job3.getCoreCompetency().getValue());
+    //System.out.println(job3.toString());
+    assertEquals(output,job3.toString());
+}
 }
